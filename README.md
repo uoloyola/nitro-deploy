@@ -23,44 +23,53 @@ First thing first you should make sure that the script suite is copied on *all* 
 
 Also we assume that you use the Nitro assembly descriptor to create your release, in other words your release jar should look something like:
 
-|-- contentdata
-|   |-- admin-gui-10.5-DR3-SNAPSHOT-contentdata.jar
-|   |-- baseline-2.0.4-contentdata.jar
-|   |-- environment-prod-content-1.0-SNAPSHOT-contentdata.jar
-|   |-- project-content-1.0-SNAPSHOT-contentdata.jar
-|   |-- project-source-1.0-SNAPSHOT-contentdata.jar
-|   |-- google-maps-1.0-SNAPSHOT-contentdata.jar
-|   |-- greenfieldtimes-content-10.5-DR3-SNAPSHOT-contentdata.jar
-|   |-- inbox-control-10.5-DR3-SNAPSHOT-activate-contentdata.jar
-|   |-- init-xml-10.5-DR3-SNAPSHOT-contentdata.jar
-|   |-- interactive-preview-10.5-DR3-SNAPSHOT-contentdata.jar
-|   |-- moderation-gui-10.5-DR3-SNAPSHOT-contentdata.jar
-|   |-- repubblicatv-1.0-SNAPSHOT-contentdata.jar
-|   `-- twitter-plugin-2.0.1-contentdata.jar
-|-- deployment-cm
-|   |-- cm-server-10.5-DR3-SNAPSHOT.ear
-|   |-- connection-properties-10.5-DR3-SNAPSHOT.war
-|   `-- content-hub.war
-|-- deployment-config
-|   |-- config.zip
-|   |-- connection.properties
-|   |-- ejb-configuration.properties
-|   |-- importOrder.txt
-|   |-- polopoly-cli.jar
-|   |-- polopoly-imports.jar
-|   |-- project-imports.jar
-|   `-- solr-home.zip
-|-- deployment-front
-|   |-- ROOT.war
-|   `-- solr.war
-|-- deployment-polopoly-gui
-|   |-- ROOT.war
-|   `-- polopoly.war
-|-- deployment-servers
-|   |-- solr-indexer.war
-|   `-- solr.war
-|-- lib-client
-|   |-- ...
+    |-- contentdata
+    |   |-- admin-gui-10.5-DR3-SNAPSHOT-contentdata.jar
+    |   |-- baseline-2.0.4-contentdata.jar
+    |   |-- environment-prod-content-1.0-SNAPSHOT-contentdata.jar
+    |   |-- project-content-1.0-SNAPSHOT-contentdata.jar
+    |   |-- project-source-1.0-SNAPSHOT-contentdata.jar
+    |   |-- google-maps-1.0-SNAPSHOT-contentdata.jar
+    |   |-- greenfieldtimes-content-10.5-DR3-SNAPSHOT-contentdata.jar
+    |   |-- inbox-control-10.5-DR3-SNAPSHOT-activate-contentdata.jar
+    |   |-- init-xml-10.5-DR3-SNAPSHOT-contentdata.jar
+    |   |-- interactive-preview-10.5-DR3-SNAPSHOT-contentdata.jar
+    |   |-- moderation-gui-10.5-DR3-SNAPSHOT-contentdata.jar
+    |   |-- repubblicatv-1.0-SNAPSHOT-contentdata.jar
+    |   `-- twitter-plugin-2.0.1-contentdata.jar
+    |-- deployment-cm
+    |   |-- cm-server-10.5-DR3-SNAPSHOT.ear
+    |   |-- connection-properties-10.5-DR3-SNAPSHOT.war
+    |   `-- content-hub.war
+    |-- deployment-config
+    |   |-- config.zip
+    |   |-- connection.properties
+    |   |-- ejb-configuration.properties
+    |   |-- importOrder.txt
+    |   |-- polopoly-cli.jar
+    |   |-- polopoly-imports.jar
+    |   |-- project-imports.jar
+    |   `-- solr-home.zip
+    |-- deployment-front
+    |   |-- ROOT.war
+    |   `-- solr.war
+    |-- deployment-polopoly-gui
+    |   |-- ROOT.war
+    |   `-- polopoly.war
+    |-- deployment-servers
+    |   |-- solr-indexer.war
+    |   `-- solr.war
+    |-- lib-client
+    |   |-- ...
 
 Release 
 =======
+
+    local ~$> ssh user@jboss.prod
+    jboss.prod ~$> cd /opt/polopoly/scripts
+    jboss.prod /opt/polopoly/scripts$> ./download_dist.sh
+    jboss.prod /opt/polopoly/scripts$> ./perform_release.sh
+
+
+
+    
