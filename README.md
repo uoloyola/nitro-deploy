@@ -21,6 +21,7 @@ We assume that you have a simplistic production environment made of the followin
 Note that there's no statistic/poll modules in our setup.
 
 First thing first you should make sure that the script suite is copied on *all* your servers in /opt/polopoly/scripts, you might want to have a way of syncing these automatically (svn, shared mount) since you will be likely to change the scripts quite often and it is vital that they are in sync.
+
 The reason why we deploy the release scripts to all servers is that, even if you run the ./perform_release.sh script from jboss, the script will in turn call scripts on external nodes, through ssh. You should also make sure that you distribute your ssh keys from jboss to all your servers, otherwise the release script will stop and prompt for password each time it executes a remote script.
 
 We assume that you use the Nitro assembly descriptor to create your release, in other words your release jar should look something like:
@@ -77,3 +78,14 @@ Release
     jboss.prod /opt/polopoly/scripts$> ./perform_release.sh
     ....  unpacking the release, stop remote servers, distribute WARs ...
     The release is finished!
+
+
+
+Multiple environments
+=====================
+
+Support for multiple environments is based on an assumption on the hostnames: the environemnt group should be defined in the 2 level of the host name, so for instance jboss.prod.foo and fe1.prod.foo belongs to the *prod* environment.
+
+Each environment should define its conf file in ./deploy/$ENV.config, this file will be automatically sourced in all the scripts. In other words if you run the release from jboss.prod.foo, the release scripts will source the configuration file ./deploy/prod.config.
+
+If the naming convention on the hostname doesn't suit your environment, you can change how configuration files are resolved in ./deploy/config.sh  
