@@ -168,17 +168,4 @@ then
   exit 1
 fi
 
-#
-# DEPLOY TO DISASTER RECOVERY ENV
-#
-if [  "$DEPLOYENVIRONMENT" == "production" ]; then
- inform "Step 13. Deploying to Disaster Recovery environment."
- ./deploy/deploy_disaster_recovery.sh
- if [ "$?" != "0" ]
-  then
-   echo -e "$ERROR Failed deploy_disaster_recovery. Stopping!"
-   exit 1
- fi
-fi
-
 inform "The release is finished!"

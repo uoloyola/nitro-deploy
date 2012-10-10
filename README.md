@@ -3,8 +3,9 @@ nitro-deploy
 
 Deploy script suite compatible with Nitro project (>10.6)
 
-This deploy script suite is not likely to work for your production/stage environment, unless you fire your editor and adapt it to your specific configuration... in other words this is just as starting point from which you can build your own deploy logic.
+This deploy script suite is not likely to work for your production/stage environment unless you fire your editor and adapt it to your configuration... in other words this is just as starting point from which you can build your own deploy logic.
 
+There's also a lot that can be improved in the scripts, nonetheless they have proved to be solid and we have used them on a daily basis for the Espresso.it project.
 
 Production setup
 ================
@@ -20,8 +21,9 @@ We assume that you have a simplistic production environment made of the followin
 Note that there's no statistic/poll modules in our setup.
 
 First thing first you should make sure that the script suite is copied on *all* your servers in /opt/polopoly/scripts, you might want to have a way of syncing these automatically (svn, shared mount) since you will be likely to change the scripts quite often and it is vital that they are in sync.
+The reason why we deploy the release scripts to all servers is that, even if you run the ./perform_release.sh script from jboss, the script will in turn call scripts on external nodes, through ssh. You should also make sure that you distribute your ssh keys from jboss to all your servers, otherwise the release script will stop and prompt for password each time it executes a remote script.
 
-Also we assume that you use the Nitro assembly descriptor to create your release, in other words your release jar should look something like:
+We assume that you use the Nitro assembly descriptor to create your release, in other words your release jar should look something like:
 
     |-- contentdata
     |   |-- admin-gui-10.5-DR3-SNAPSHOT-contentdata.jar
@@ -66,10 +68,12 @@ Release
 =======
 
     local ~$> ssh user@jboss.prod
-    jboss.prod ~$> cd /opt/polopoly/scripts
-    jboss.prod /opt/polopoly/scripts$> ./download_dist.sh
-    jboss.prod /opt/polopoly/scripts$> ./perform_release.sh
-
-
-
     
+    jboss.prod ~$> cd /opt/polopoly/scripts
+    
+    jboss.prod /opt/polopoly/scripts$> ./download_dist.sh
+    // interactive //
+
+    jboss.prod /opt/polopoly/scripts$> ./perform_release.sh
+    ....  unpacking the release, stop remote servers, distribute WARs ...
+    The release is finished!
