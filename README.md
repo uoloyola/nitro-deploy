@@ -22,7 +22,7 @@ Note that there's no statistic/poll modules in our setup.
 
 First thing first you should make sure that the script suite is copied on *all* your servers in /opt/polopoly/scripts, you might want to have a way of syncing these automatically (svn, shared mount) since you will be likely to change the scripts quite often and it is vital that they are in sync.
 
-The reason why we deploy the release scripts to all servers is that, even if you run the ./perform_release.sh script from jboss, the script will in turn call scripts on external nodes, through ssh. You should also make sure that you distribute your ssh keys from jboss to all your servers, otherwise the release script will stop and prompt for password each time it executes a remote script.
+The reason why we deploy the release scripts to all servers is that, even if you run the ./perform_release.sh script from jboss, the script will in turn call scripts on external nodes, through ssh. You should also make sure to distribute ssh-keys from jboss to all your servers, otherwise the release script will stop and prompt for password each time it executes a remote script.
 
 We assume that you use the Nitro assembly descriptor to create your release, in other words your release jar should look something like:
 
