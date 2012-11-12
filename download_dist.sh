@@ -9,7 +9,7 @@
 ####################################################################
 
 # for this script to work you must add the following line in ~/.netrc : 
-# machine ftp.where-you-keep-the.dist login your-login-name password your-password
+# machine ftp.kataweb.it login deploy-popoloy-ftp password Pkjf76dE
 
 SCRIPTPATH="$(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")"
 BASEPATH=`dirname $SCRIPTPATH`

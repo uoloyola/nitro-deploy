@@ -6,8 +6,7 @@
 ################################################################
 
 DEPLOY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-# expecting hostname in the form: jboss.stage
+# expecting hostname in the form: jboss.stage.per
 CONFIG_PREFIX=`echo $HOSTNAME | cut -d"." -f2`
 
 source $DEPLOY_DIR/$CONFIG_PREFIX.config

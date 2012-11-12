@@ -1,5 +1,4 @@
 #!/bin/sh
 # Clean solr indexes data
 
-rm -rf /opt/polopoly/solr.home/public/data/*
-
+rm -rf /var/lib/polopoly/index/public/data/*

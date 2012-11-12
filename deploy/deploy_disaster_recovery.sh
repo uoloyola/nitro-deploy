@@ -78,11 +78,11 @@ done
 
 # DEPLOY TO JBOSS DR
 scp -B  $RELEASEDIRECTORY/deployment-cm/* $JBOSS_HOST_DR:/opt/jboss/server/default/deploy/polopoly/.
+scp -B  $RELEASEDIRECTORY/deployment-config/*.properties $JBOSS_HOST_DR:/var/lib/polopoly/dist/current/deployment-config/.
 if [ "$?" == "0" ]
   then
-    echo "Copied cm server ear, connection properties war and content hub war to jboss DR"
+    echo "Deployed CM wars and config to ($JBOSS_HOST_DR)"
   else
-    echo "Failed to copy cm server ear, connection properties war and content hub war to jboss DR"
+    echo "Failed to deploy CM wars and config to ($JBOSS_HOST_DR)!"
     exit 1
 fi
-

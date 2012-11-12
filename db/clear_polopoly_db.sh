@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# note: this script is meant to be used *only* from db.stage
+# note: this script is meant to be used *only* from db.stage.per
 #
 
 mysqladmin -upolopoly -pluggan drop -f polopoly_espresso_stage

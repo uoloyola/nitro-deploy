@@ -12,19 +12,23 @@ then
 fi
 
 #
-# DEPLOY TO FRONT SERVERS
+# STOP, DEPLOY AND START FRONT SERVERS
 #
 
 for FRONT in ${FRONTSERVERS[@]}
 do
+  ssh polopoly@$FRONT /etc/init.d/tomcat force-stop
   ssh polopoly@$FRONT /opt/polopoly/scripts/front/clean_webapps.sh
   scp -B $RELEASEDIRECTORY/deployment-front/* $FRONT:/opt/tomcat/webapps/.
+  ssh polopoly@$FRONT /etc/init.d/tomcat start
 
   if [ "$?" == "0" ]
   then
-    echo "Deployed new front webapp ($FRONT)"
+    echo "Stopped tomcat, deployed new front webapp and restarted tomcat ($FRONT)"
   else
-    echo "Failed deploying new front webapp ($FRONT)!"
+    echo "Failed to stop tomcat, deploy new front webapp and restart tomcat ($FRONT)!"
     exit 1
   fi
+  # Wait 5 seconds before the next front
+  sleep 5
 done
