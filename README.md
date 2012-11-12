@@ -26,28 +26,28 @@ The reason why we deploy the release scripts to all servers is that, even if you
 
 We assume that you use the Nitro assembly descriptor to create your release, in other words your release jar should look something like:
 
+    dist/
+    |-- README.txt
     |-- contentdata
-    |   |-- admin-gui-10.5-DR3-SNAPSHOT-contentdata.jar
+    |   |-- admin-gui-10.6.0-bc91117-contentdata.jar
     |   |-- baseline-2.0.4-contentdata.jar
     |   |-- environment-prod-content-1.0-SNAPSHOT-contentdata.jar
-    |   |-- project-content-1.0-SNAPSHOT-contentdata.jar
-    |   |-- project-source-1.0-SNAPSHOT-contentdata.jar
+    |   |-- espresso-content-1.0-SNAPSHOT-contentdata.jar
+    |   |-- espresso-source-1.0-SNAPSHOT-contentdata.jar
     |   |-- google-maps-1.0-SNAPSHOT-contentdata.jar
-    |   |-- greenfieldtimes-content-10.5-DR3-SNAPSHOT-contentdata.jar
-    |   |-- inbox-control-10.5-DR3-SNAPSHOT-activate-contentdata.jar
-    |   |-- init-xml-10.5-DR3-SNAPSHOT-contentdata.jar
-    |   |-- interactive-preview-10.5-DR3-SNAPSHOT-contentdata.jar
-    |   |-- moderation-gui-10.5-DR3-SNAPSHOT-contentdata.jar
+    |   |-- greenfieldtimes-content-10.6.0-bc91117-contentdata.jar
+    |   |-- inbox-control-10.6.0-bc91117-activate-contentdata.jar
+    |   |-- init-xml-10.6.0-bc91117-contentdata.jar
+    |   |-- interactive-preview-10.6.0-bc91117-contentdata.jar
+    |   |-- moderation-gui-10.6.0-bc91117-contentdata.jar
     |   |-- repubblicatv-1.0-SNAPSHOT-contentdata.jar
     |   `-- twitter-plugin-2.0.1-contentdata.jar
     |-- deployment-cm
-    |   |-- cm-server-10.5-DR3-SNAPSHOT.ear
-    |   |-- connection-properties-10.5-DR3-SNAPSHOT.war
+    |   |-- cm-server-10.6.0-bc91117.ear
+    |   |-- connection-properties-10.6.0-bc91117.war
     |   `-- content-hub.war
     |-- deployment-config
     |   |-- config.zip
-    |   |-- connection.properties
-    |   |-- ejb-configuration.properties
     |   |-- importOrder.txt
     |   |-- polopoly-cli.jar
     |   |-- polopoly-imports.jar
@@ -58,18 +58,30 @@ We assume that you use the Nitro assembly descriptor to create your release, in 
     |   `-- solr.war
     |-- deployment-polopoly-gui
     |   |-- ROOT.war
+    |   |-- activeMQ.war
+    |   |-- custom-ws.war
     |   `-- polopoly.war
     |-- deployment-servers
     |   |-- solr-indexer.war
     |   `-- solr.war
     |-- lib-client
+    |   |-- SSO_servlet-1.0-SNAPSHOT.jar
+    |   |-- abdera-client-1.0.jar
+    |   |-- abdera-core-1.0.jar
     |   |-- ...
+    |   `-- xstream-1.3.1.jar
+    `-- lib-polopoly
+        `-- polopoly-10.6.0-bc91117.jar
+    
+
 
 Release 
 =======
 
 In our project we have set up a Jenkins job that execute the following maven task:
+
     mvn clean install p:assemble-dist -DtargetEnv=prod
+
 When the build is completed, it uploads the distribution file to an FTP server within the DMZ of our production network.
 
 The first step is to download the release dist to the Jboss node:
