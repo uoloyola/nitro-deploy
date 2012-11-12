@@ -3,9 +3,9 @@ nitro-deploy
 
 Deploy script suite compatible with Nitro project (>10.6)
 
-This deploy script suite is not likely to work for your production/stage environment unless you fire your editor and adapt it to your configuration... in other words this is just as starting point from which you can build your own deploy logic.
+This deploy script suite is not likely to work for your production/stage environment unless you fire your editor and adapt it to your configuration... consider this suite just  as starting point from which you can build your own deploy logic.
 
-There's also a lot that can be improved in the scripts, nonetheless they have proved to be solid and we have used them on a daily basis for the Espresso.it project.
+There's also a lot that can be improved in the scripts, nonetheless they have proved to be solid and we have used them on a daily basis for the Espresso.it project. Be aware that some of the deploy steps are specific for Espresso.it production environment (eg Disaster Recovery deploy & custom webservices).  
 
 Production setup
 ================
@@ -68,12 +68,22 @@ We assume that you use the Nitro assembly descriptor to create your release, in 
 Release 
 =======
 
+In our project we have set up a Jenkins job that execute the following maven task:
+    mvn clean install p:assemble-dist -DtargetEnv=prod
+When the build is completed, it uploads the distribution file to an FTP server within the DMZ of our production network.
+
+The first step is to download the release dist to the Jboss node:
+
     local ~$> ssh user@jboss.prod
     
     jboss.prod ~$> cd /opt/polopoly/scripts
     
     jboss.prod /opt/polopoly/scripts$> ./download_dist.sh
     // interactive //
+
+
+Once download is completed we can start the release suite:
+
 
     jboss.prod /opt/polopoly/scripts$> ./perform_release.sh
     ....  unpacking the release, stop remote servers, distribute WARs ...
