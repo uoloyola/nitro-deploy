@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<user>
+  <fullName>ubaldo</fullName>
+  <properties>
+    <hudson.model.PaneStatusProperties>
+      <collapsed/>
+    </hudson.model.PaneStatusProperties>
+    <jenkins.security.ApiTokenProperty>
+      <apiToken>Ee9Ru44Nq1ILMCK9Uj7pGwBAAP7Nd/wnOi1h3U5j/l7V6ZQTgJVYW2e6EkUmzIpX</apiToken>
+    </jenkins.security.ApiTokenProperty>
+    <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@1.16.1">
+      <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash"/>
+    </com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty>
+    <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.10"/>
+    <hudson.model.MyViewsProperty>
+      <views>
+        <hudson.model.AllView>
+          <owner class="hudson.model.MyViewsProperty" reference="../../.."/>
+          <name>All</name>
+          <filterExecutors>false</filterExecutors>
+          <filterQueue>false</filterQueue>
+          <properties class="hudson.model.View$PropertyList"/>
+        </hudson.model.AllView>
+      </views>
+    </hudson.model.MyViewsProperty>
+    <hudson.search.UserSearchProperty>
+      <insensitiveSearch>false</insensitiveSearch>
+    </hudson.search.UserSearchProperty>
+    <jenkins.security.LastGrantedAuthoritiesProperty>
+      <roles>
+        <string>_appserverusr</string>
+        <string>staff</string>
+        <string>_lpoperator</string>
+        <string>com.apple.sharepoint.group.1</string>
+        <string>admin</string>
+        <string>com.apple.access_ssh</string>
+        <string>_lpadmin</string>
+        <string>localaccounts</string>
+        <string>_appserveradm</string>
+        <string>_developer</string>
+        <string>com.apple.access_screensharing</string>
+        <string>everyone</string>
+        <string>_appstore</string>
+        <string>authenticated</string>
+      </roles>
+      <timestamp>1429204101368</timestamp>
+    </jenkins.security.LastGrantedAuthoritiesProperty>
+  </properties>
+</user>
